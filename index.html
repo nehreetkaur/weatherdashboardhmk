@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+
+    <div class="container-fluid text-center text-light bg-dark">
+        <h1> Weather Dashboard</h1>
+
+    </div>
+    <div class="container">
+        <!--adding clearfix to parent for better float-->
+        <div class="clearfix">
+            <div class="col-4  float-left">
+                <nav class="navbar navbar-light bg-light p-3 mb-5 bg-white rounded">
+                    <h4>Search for city:</h4>
+                    <form class="form-inline">
+                        <input id="user-city-input" class="form-control mr-sm-2" type="search" placeholder="search"
+                            label="search">
+                        <button id="select-btn" class="btn btn-primary" type="submit">Search</button>
+                    </form>
+
+                    <form id="search-history" class="mt-1">
+                        <!--through js-->
+                    </form>
+                </nav>
+            </div>
+            <div class="col-8  float-right">
+                <div class="card  bg-light  text-dark p-2rem  p-3  mb-5  bg-white rounded"
+                    style="width:710; height:19 rem;">
+                    <div id="current"></div>
+
+                    <!---weather goes herein js-->
+                    <div id="uv-show"></div>
+
+                </div>
+                <br>
+                <h2>5 day forecast</h2>
+                <div id="5day" class="row">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
