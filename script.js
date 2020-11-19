@@ -1,17 +1,17 @@
 moment().format('L');
-
+var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
 
 
 // search function
 
 function searchCity(cityname) {
 
-    var queryURl1 = "https://api.openweathermap.org/data/2.5/weather?q=austin&APPID=6bbd53d46de3755aee4c32c7e592cb12";// this working
-    // var queryURL1="https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
-
+    // var queryURl1 = "https://api.openweathermap.org/data/2.5/weather?q=austin&APPID=6bbd53d46de3755aee4c32c7e592cb12";// this working
+    var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
+    console.log(queryURL1);
 
     //forecast url
-    //var queryURL2="https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
 
     // ajax call
 
@@ -112,7 +112,7 @@ function searchCity(cityname) {
 
 
             var date1 = results[i].dt_txt;
-            var date2 = date.substr(0, 10);
+            var date2 = date1.substr(0, 10);
             var temp = results[i].main.temp;
             var humidity = results[i].main.humidity;
 
@@ -157,7 +157,7 @@ function searchCity(cityname) {
 
 }
 
-pageshow();
+
 
 
 // main handler
@@ -182,16 +182,26 @@ $("#select-btn").on("click", function (e) {
 
 
 function pageshow() {
-    var lsearch = JSON.parse(localStorage.getItem("cityName"));
-    var sdiv = $("<button class='btn ' style='width:12 rem;'>").text(lsearch);
-    var search2 = $("<div>");
-    search2.append(sdiv);
+    //var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
+    // var array = ["Austin", "Houston", "San Antonio"]; // 2
+    
+    if (lsearch.length > 0) {
+        searchCity(lsearch[lsearch.length - 1])
+     
+        
 
-    $("#search-history").prepend(search2);
+
+    //     var sdiv = $("<button class='btn ' style='width:12 rem;'>").text(lsearch);
+    //     var search2 = $("<div>");
+    //     search2.append(sdiv);
+
+    //     $("#search-history").prepend(search2);
+     }
 }
 $("#search-history").on('click', '.btn', function (e) {
     e.preventDefault();
     //console.log($(this).text());
-    searchCity($(this).text());
+    searchCity( $("#user-city-input").val().trim())
 });
 
+pageshow();
