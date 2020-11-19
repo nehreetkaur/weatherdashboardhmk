@@ -97,13 +97,13 @@ function searchCity(cityname) {
 
 
         //5day div
-        $("#5day").empty();
+        $("#5-forecast").empty();
         //info for div
         for (var i = 0; i < results.length; i += 8) {
             //making div
 
 
-            var forecastdiv = $("<div class='card     text-white  bg-primary mb-5' style ='width:8.5rem; height:11 rem;'>");
+            var forecastdiv = $("<div class='card     text-white  bg-primary mb-5' style ='width:136px; height:176px;'>");
 
 
 
@@ -122,8 +122,8 @@ function searchCity(cityname) {
             // creating tags with results
 
             var h5d = $("<h5 class='card-heading'>").text(date2);
-            var temp1 = $("<p class='card-text'>").text("Temp:" + temp);
-            var humidity1 = $("<p class='card-text'>").text("humidity" + humidity);
+            var temp1 = $("<p class='card-text'>").text("Temperature:" + temp);
+            var humidity1 = $("<p class='card-text'>").text("Humidity:" + humidity);
             var weth = results[i].weather[0].main;
 
 
@@ -149,7 +149,7 @@ function searchCity(cityname) {
             forecastdiv.append(temp1);
             forecastdiv.append(humidity1);
             forecastdiv.append(wethicon);
-            $("#5day").append(forecastdiv);
+            $("#5-forecast").append(forecastdiv);
 
 
         }

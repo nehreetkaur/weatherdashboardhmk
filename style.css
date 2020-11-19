@@ -1,3 +1,38 @@
 .container{
     margin-top:auto;
 }
+
+
+.form-control{
+    margin-right: 2px;
+}
+
+
+
+#search-history{
+    margin-top:1px;
+}
+
+
+.card{
+    padding-bottom: 20px;
+    margin-bottom:5px ;
+    background: white;
+    margin-right: 3px;
+    width:600px;
+    height:190px;
+}
+
+
+#current{
+
+    
+    margin-left: 10px;
+    background: white;
+    color:black;
+}
+
+.forecast{
+
+    
+}
