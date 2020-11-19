@@ -1,4 +1,4 @@
-moment().format('L');
+moment().format('L');    //moment.js
 var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
 
 
@@ -186,12 +186,12 @@ function pageshow() {
     // var array = ["Austin", "Houston", "San Antonio"]; // 2
     
     if (lsearch.length > 0) {
-        searchCity(lsearch[lsearch.length - 1])
+        searchCity(lsearch[lsearch.length - 1]);
      
         
 
 
-    //     var sdiv = $("<button class='btn ' style='width:12 rem;'>").text(lsearch);
+    //     var sdiv = $("<button class='btn ' style='width:'>").text(lsearch);
     //     var search2 = $("<div>");
     //     search2.append(sdiv);
 
