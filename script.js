@@ -6,7 +6,7 @@ var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
 
 function searchCity(cityname) {
 
-    // var queryURl1 = "https://api.openweathermap.org/data/2.5/weather?q=austin&APPID=6bbd53d46de3755aee4c32c7e592cb12";// this working
+    // var queryURl1 = "https://api.openweathermap.org/data/2.5/forecast?q=austin&APPID=6bbd53d46de3755aee4c32c7e592cb12";// this working
     var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";
     console.log(queryURL1);
 
