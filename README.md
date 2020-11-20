@@ -55,6 +55,6 @@ IT shows the **weather** of **entered city** with the **Five Day Forecast**.
 
 
 ## Links
-[Git-hub-Repository]()
+[Github Repository](https://github.com/nehreetkaur/weatherdashboardhmk)
 
-[Git-hub-Deployed Application]()
+[Github Deployed Application](https://nehreetkaur.github.io/weatherdashboardhmk/)
