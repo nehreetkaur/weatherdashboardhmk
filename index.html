@@ -21,23 +21,22 @@
     <div class="container">
         <!--adding clearfix to parent for better float-->
         <div class="clearfix">
-            <div class="col-4  float-left">
+            <aside class="col-4  float-left">
                 <nav class="navbar navbar-light bg-light p-3 mb-5 bg-white rounded">
                     <h4>Search for city:</h4>
-                    <form class="form-inline">
-                        <input id="user-city-input" class="form-control " type="search" placeholder="search"
-                            label="search">
+                    <aside class="aside1">
+                        <input id="user-city-input" class="form-control " type="search"
+                            placeholder="enter city for search" label="search">
                         <button id="select-btn" class="btn btn-primary" type="submit">Search</button>
-                    </form>
+                    </aside>
 
-                    <form id="search-history" >
+                    <div id="search-history">
                         <!--through js-->
-                    </form>
+                    </div>
                 </nav>
-            </div>
+            </aside>
             <div class="col-8  float-right">
-                <div class="card  bg-light  text-dark   bg-white rounded"
-                    style="width:710; height:304px;">
+                <div class="card  bg-light  text-dark   bg-white rounded" style="width:710; height:304px;">
                     <div id="current"></div>
 
                     <!---weather goes herein js-->

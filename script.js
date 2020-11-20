@@ -7,11 +7,11 @@ var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
 function searchCity(cityname) {
 
     // var queryURl1 = "https://api.openweathermap.org/data/2.5/weather?q=austin&APPID=6bbd53d46de3755aee4c32c7e592cb12";// this working
-    var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
+    var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";
     console.log(queryURL1);
 
     //forecast url
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";// coming inavalid
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=6bbd53d46de3755aee4c32c7e592cb12";
 
     // ajax call
 
@@ -21,7 +21,9 @@ function searchCity(cityname) {
     }).then(function (response) {
         console.log(response);
         console.log(queryURL1);
+
         //empt div ,we can put info in
+
         $("#current").empty();
         var date = moment().format('L');
 
@@ -30,9 +32,9 @@ function searchCity(cityname) {
         //city info
         var cityName = $("<h2>").text(response.name);
         var maindate = cityName.append("" + date);
-        var temp = $("<p>").text("Temperature" + response.main.temp);
-        var humidity = $("<p>").text("Humidity" + response.main.humidity);
-        var wind = $("<p>").text("Wind speed" + response.wind.speed);
+        var temp = $("<p>").text("Temperature:" + response.main.temp);
+        var humidity = $("<p>").text("Humidity:" + response.main.humidity);
+        var wind = $("<p>").text("Wind speed:" + response.wind.speed);
         var presentweather = response.weather[0].main;
 
 
@@ -96,11 +98,14 @@ function searchCity(cityname) {
         var results = response.list;
 
 
-        //5day div
+        //5-forecast div
+
         $("#5-forecast").empty();
         //info for div
+
         for (var i = 0; i < results.length; i += 8) {
             //making div
+
 
 
             var forecastdiv = $("<div class='card     text-white  bg-primary mb-5' style ='width:136px; height:176px;'>");
@@ -122,7 +127,7 @@ function searchCity(cityname) {
             // creating tags with results
 
             var h5d = $("<h5 class='card-heading'>").text(date2);
-            var temp1 = $("<p class='card-text'>").text("Temperature:" + temp);
+            var temp1 = $("<p class='card-text'>").text("Temp:" + temp);
             var humidity1 = $("<p class='card-text'>").text("Humidity:" + humidity);
             var weth = results[i].weather[0].main;
 
@@ -167,14 +172,37 @@ $("#select-btn").on("click", function (e) {
     e.preventDefault();
     var usercityinput = $("#user-city-input").val().trim();
 
-    //saving
-    var text = $(this).siblings("input").val(); // cildren of input
+    // Normalize all city name by converting it to lowercase
+    var text = String($(this).siblings("input").val().trim()).toLowerCase(); // children of input
 
-    var savearr = [];
-    savearr.push(text);
-    localStorage.setItem("cityName", JSON.stringify(savearr));
+    // Push city to lsearch array only if the city is not included in the array
+    if (!lsearch.includes(text)) {
+        lsearch.push(text);
+    } else {               // city is included in array so let's move it to the end of array
+        var indexOfCity = lsearch.indexOf(text);     // get index where city is located
+        lsearch.splice(indexOfCity, 1);    // remove city from array at desired index
+        lsearch.push(text);       // append to end of array
+    }
+
+    localStorage.setItem("cityName", JSON.stringify(lsearch));
     searchCity(usercityinput);
-    pageshow();
+
+
+    //edit value of #search-history to reflect what is now in local storage or in lsearch
+    var currentCities = JSON.parse(localStorage.getItem('cityName'))
+    console.log(currentCities)
+
+    //forEach --> run functionality on each item in the array
+    $('#search-history').empty()
+    currentCities.forEach(function (currentValue) {
+        // var newButton = document.createElement('button')
+
+        var newthing = $("<div class='d1'>").text(currentValue)
+        //newthing.append(div)
+        newthing.prepend = $("<div>");
+        //newthing.html = currentValue
+        $('#search-history').append(newthing)
+    })
 
 });
 
@@ -182,26 +210,19 @@ $("#select-btn").on("click", function (e) {
 
 
 function pageshow() {
-    //var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
-    // var array = ["Austin", "Houston", "San Antonio"]; // 2
-    
+
+
     if (lsearch.length > 0) {
         searchCity(lsearch[lsearch.length - 1]);
-     
-        
 
 
-    //     var sdiv = $("<button class='btn ' style='width:'>").text(lsearch);
-    //     var search2 = $("<div>");
-    //     search2.append(sdiv);
 
-    //     $("#search-history").prepend(search2);
-     }
+    }
 }
 $("#search-history").on('click', '.btn', function (e) {
     e.preventDefault();
     //console.log($(this).text());
-    searchCity( $("#user-city-input").val().trim())
+    searchCity($("#user-city-input").val().trim())
 });
 
 pageshow();
