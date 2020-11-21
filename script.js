@@ -1,6 +1,6 @@
-moment().format('L');    //moment.js
+//moment().format('L');    //moment.js
 var lsearch = JSON.parse(localStorage.getItem("cityName")) || [];
-
+moment().format('L');    //moment.js
 
 // search function
 
@@ -104,7 +104,9 @@ function searchCity(cityname) {
         //info for div
 
         for (var i = 0; i < results.length; i += 8) {
+            
             //making div
+
 
 
 

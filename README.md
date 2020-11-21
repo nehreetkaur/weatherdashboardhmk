@@ -8,7 +8,7 @@ IT shows the **weather** of **entered city** with the **Five Day Forecast**.
 
 
 # Description:-
-**Weather Dashboard** which shows the weaather of entered city with **Five Day Forecast**. And the entered city stores in array in **local Storage**.If the user,entered the city name again , **definately** user can see the weather again, but the name of city stored at the end of array in local storage. So, It means that the most recent search goes at the **end** of array. I have the oppurtunity to work with the **API Key** .This was challenging, big thanks to my **Instructor**
+**Weather Dashboard** which shows the weather of entered city with **Five Day Forecast**. And the entered city stores in array in **local Storage**.If the user,entered the city name again , **definately** user can see the weather again, but the name of city stored at the end of array in local storage. So, It means that the most recent search goes at the **end** of array. I have the oppurtunity to work with the **API Key** .This was challenging, big thanks to my **Instructor**
 **CALVIN CARTER** . As I ,undestand some parts in a very good way.
 
    
